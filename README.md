@@ -32,22 +32,22 @@
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:00ffe7,100:f0f&height=20&section=header"/>
 </p>
 
-<h2 align="center" style="color:#00ffe7;">✨ <span style="color:#ff00cc;">Futuristic</span> Features</h2>
+<h2 align="center" style="color:#00ffe7;">Futuristic Features</h2>
 
-- <span style="color:#00ffe7;">🌈 <b>Modern UI</b></span> — Sleek, responsive, and animated with dark/light mode
-- <span style="color:#ff00cc;">🤖 <b>AI Extraction</b></span> — Extracts emails, phones, skills, and more from PDFs, DOCX, images, etc.
-- <span style="color:#00ffe7;">📊 <b>Analytics Dashboard</b></span> — Instant charts and insights after parsing
-- <span style="color:#ff00cc;">🧑‍💻 <b>Bulk Upload</b></span> — Analyze multiple resumes in one go
-- <span style="color:#00ffe7;">🔒 <b>Privacy-first</b></span> — Option to anonymize personal info
-- <span style="color:#ff00cc;">🎨 <b>Futuristic Visuals</b></span> — Neon glows, gradients, smooth transitions
-- <span style="color:#00ffe7;">🪄 <b>Export</b></span> — Download results as CSV or JSON
-- <span style="color:#ff00cc;">🌐 <b>Cross-platform</b></span> — Works on macOS, Windows, and Linux
+- <b>Modern UI</b> — Sleek, responsive, and animated with dark/light mode
+- <b>AI Extraction</b> — Extracts emails, phones, skills, and more from PDFs, DOCX, images, etc.
+- <b>Analytics Dashboard</b> — Instant charts and insights after parsing
+- <b>Bulk Upload</b> — Analyze multiple resumes in one go
+- <b>Privacy-first</b> — Option to anonymize personal info
+- <b>Futuristic Visuals</b> — Neon glows, gradients, smooth transitions
+- <b>Export</b> — Download results as CSV or JSON
+- <b>Cross-platform</b> — Works on macOS, Windows, and Linux
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:f0f,100:00ffe7&height=20&section=header"/>
 </p>
 
-> **Best viewed in dark mode for full effect!**
+> <b>Best viewed in dark mode for full effect.</b>
 
 ---
 
@@ -160,8 +160,8 @@ resume-sense/
 
 ---
 
-## 🧑‍🚀 Credits
-- Engineered by <b>Abhishek</b>
+## Credits
+- <b><a href="https://abhi-gcet.netlify.app" target="_blank" style="color:#00ffe7; text-shadow:0 0 8px #00ffe7,0 0 16px #7f7fff; text-decoration:none;">Engineered by Abhishek</a></b>
 
 ---
 
