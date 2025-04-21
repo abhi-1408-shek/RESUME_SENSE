@@ -1,35 +1,61 @@
 <!-- Futuristic Resume Parser & Analytics Platform -->
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/placeholder/futuristic-logo.png" width="180" alt="ResumeSense Logo"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=40&duration=3500&pause=1000&color=00FFE7&center=true&vCenter=true&width=900&lines=ResumeSense;AI+Resume+Parser+%26+Analytics+Platform;Futuristic.+Accurate.+Beautiful." alt="ResumeSense Animated Logo"/>
 </p>
 
-<h1 align="center" style="color:#00ffe7; text-shadow:0 0 10px #f0f, 0 0 20px #0ff;">ResumeSense</h1>
+<p align="center">
+  <img src="https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github"/>
+  <img src="https://img.shields.io/badge/license-MIT-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-0099ff?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/stars/abhi-1408-shek/RESUME_PARSER?style=for-the-badge"/>
+</p>
 
 <p align="center">
-  <b>The AI-powered, multi-format Resume Parser & Analytics Platform</b><br>
-  <span style="color:#ff00cc;">Fast. Accurate. Beautiful. Built for the future of hiring.</span>
+  <a href="#demo-animation" style="margin:0 10px;"><img src="https://img.shields.io/badge/Live+Demo-00ffe7?style=for-the-badge&logo=vercel"/></a>
+  <a href="https://github.com/abhi-1408-shek/RESUME_PARSER" style="margin:0 10px;"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github"/></a>
+  <a href="#getting-started" style="margin:0 10px;"><img src="https://img.shields.io/badge/Get+Started-fuchsia?style=for-the-badge&logo=rocket"/></a>
 </p>
 
 ---
 
-## 🚀 Features
+<div align="center">
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/github.svg" width="40"/>
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/react.svg" width="40"/>
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/python.svg" width="40"/>
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/fastapi.svg" width="40"/>
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/tailwindcss.svg" width="40"/>
+  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/chartjs.svg" width="40"/>
+</div>
 
-- 🌈 <b>Modern UI</b> — Sleek, responsive, and animated with dark/light mode
-- 🤖 <b>AI Extraction</b> — Extracts emails, phones, skills, and more from PDFs, DOCX, images, etc.
-- 📊 <b>Analytics Dashboard</b> — Instant charts and insights after parsing
-- 🧑‍💻 <b>Bulk Upload</b> — Analyze multiple resumes in one go
-- 🔒 <b>Privacy-first</b> — Option to anonymize personal info
-- 🎨 <b>Futuristic Visuals</b> — Neon glows, gradients, smooth transitions
-- 🪄 <b>Export</b> — Download results as CSV or JSON
-- 🌐 <b>Cross-platform</b> — Works on macOS, Windows, and Linux
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:00ffe7,100:f0f&height=20&section=header"/>
+</p>
+
+<h2 align="center" style="color:#00ffe7;">✨ <span style="color:#ff00cc;">Futuristic</span> Features</h2>
+
+- <span style="color:#00ffe7;">🌈 <b>Modern UI</b></span> — Sleek, responsive, and animated with dark/light mode
+- <span style="color:#ff00cc;">🤖 <b>AI Extraction</b></span> — Extracts emails, phones, skills, and more from PDFs, DOCX, images, etc.
+- <span style="color:#00ffe7;">📊 <b>Analytics Dashboard</b></span> — Instant charts and insights after parsing
+- <span style="color:#ff00cc;">🧑‍💻 <b>Bulk Upload</b></span> — Analyze multiple resumes in one go
+- <span style="color:#00ffe7;">🔒 <b>Privacy-first</b></span> — Option to anonymize personal info
+- <span style="color:#ff00cc;">🎨 <b>Futuristic Visuals</b></span> — Neon glows, gradients, smooth transitions
+- <span style="color:#00ffe7;">🪄 <b>Export</b></span> — Download results as CSV or JSON
+- <span style="color:#ff00cc;">🌐 <b>Cross-platform</b></span> — Works on macOS, Windows, and Linux
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:f0f,100:00ffe7&height=20&section=header"/>
+</p>
+
+> **Best viewed in dark mode for full effect!**
 
 ---
 
 ## 💡 Demo Animation
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/placeholder/demo-animation.gif" width="700" alt="Demo Animation"/>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2JzZ3J6a3NwNnVnZ2h6M3U5a2d5b3ZyN3ZqN2VpY3JkZHJ3dGJzZiZjd2NwZ2x2d3RjZzV6a2JpNnB2bGJ3dSZjdD1z/3o7TKtnuHOHHUjR38Y/giphy.gif" width="700" alt="Demo Animation"/>
+  <br><i>(Animated demo: parsing, analytics, and export in action!)</i>
 </p>
 
 ---
