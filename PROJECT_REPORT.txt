@@ -1,0 +1,128 @@
+============================================================
+           ResumeSense: Project Report
+============================================================
+
+Project Title:  ResumeSense – AI-powered Resume Parser & Analytics Platform
+Author:        Abhishek
+Date:          April 2025
+
+------------------------------------------------------------
+1. Overview
+------------------------------------------------------------
+ResumeSense is a full-stack, cross-platform application for parsing, analyzing, and visualizing resume data. It leverages advanced AI/NLP libraries to extract structured information from resumes in various formats (PDF, DOCX, images, etc.), provides analytics dashboards, and supports both single and bulk resume processing. The platform features a modern, futuristic UI with dark/light mode and export options.
+
+------------------------------------------------------------
+2. Tech Stack
+------------------------------------------------------------
+- **Backend:** FastAPI (Python)
+- **Frontend:** React (JavaScript), TailwindCSS
+- **Data Science/NLP:** SpaCy, Presidio, Matplotlib, Pandas, Cohere (optional)
+- **Visualization:** Chart.js
+- **Others:** PyPDF2, python-docx, Pillow, pytesseract, opencv-python
+
+------------------------------------------------------------
+3. Key Features
+------------------------------------------------------------
+- Multi-format resume parsing (PDF, DOCX, TXT, images)
+- AI-powered extraction (emails, phones, skills, entities, etc.)
+- Bulk upload and batch processing
+- Analytics dashboard with charts and summary
+- Anonymization (PII removal)
+- Export results as CSV or JSON
+- Responsive, modern UI with dark/light mode
+- Animated, glowing footer: "Engineered by Abhishek"
+
+------------------------------------------------------------
+4. Directory Structure
+------------------------------------------------------------
+resume-sense/
+├── backend/        # FastAPI backend
+│   ├── main.py     # Entry point
+│   ├── bulk.py     # Bulk parsing logic
+│   ├── analytics.py# Analytics and chart generation
+│   ├── extractor.py# Text and entity extraction
+│   ├── nlp.py      # NLP utilities
+│   ├── match.py    # Resume-job matching
+│   ├── suggest.py  # AI suggestions (Cohere)
+│   ├── ...
+├── frontend/       # React frontend
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── utils/
+│   └── ...
+├── README.md
+├── PROJECT_REPORT.txt
+└── ...
+
+------------------------------------------------------------
+5. Backend Details
+------------------------------------------------------------
+- **main.py**: FastAPI app, routes for parsing, analytics, suggestions, etc.
+- **bulk.py**: Handles multiple file uploads, processes each resume, aggregates results.
+- **analytics.py**: Generates analytics (summary, charts) using Pandas and Matplotlib. Uses 'Agg' backend for server-side rendering.
+- **extractor.py**: Extracts text and entities from files using SpaCy, PyPDF2, python-docx, Pillow, pytesseract.
+- **nlp.py**: NLP utilities for skill extraction, entity recognition, etc.
+- **match.py**: Compares resume with job description using NLP and semantic similarity.
+- **suggest.py**: Integrates with Cohere API for AI-powered suggestions and scoring.
+- **requirements.txt**: All dependencies listed for cross-platform compatibility.
+
+------------------------------------------------------------
+6. Frontend Details
+------------------------------------------------------------
+- **React + TailwindCSS** for a modern, responsive UI
+- **Pages**: Home (single resume), Bulk (multiple resumes)
+- **Components**: Header, Footer, UploadArea, AnalyticsDashboard, ExportButtons, Loader, MatchScore, AISuggestions
+- **Theme**: Dark/light mode toggle, gradients, neon effects, smooth transitions
+- **API Integration**: Uses Axios for communication with FastAPI backend
+- **Export**: Download CSV/JSON for parsed data
+
+------------------------------------------------------------
+7. Libraries & Dependencies
+------------------------------------------------------------
+- fastapi, uvicorn, python-multipart, pydantic
+- spacy, pandas, matplotlib, PyPDF2, python-docx
+- presidio-analyzer, presidio-anonymizer, pillow, pytesseract, opencv-python
+- cohere (optional, for AI suggestions)
+- starlette-cors, platformdirs
+- react, react-router-dom, axios, tailwindcss, chart.js
+
+------------------------------------------------------------
+8. How It Works (Functioning)
+------------------------------------------------------------
+1. **User uploads resume(s)** via the frontend (single or bulk).
+2. **Frontend** sends files to backend via REST API.
+3. **Backend** extracts text and entities using NLP and AI libraries.
+4. **Analytics**: Backend computes summary stats and generates charts (Matplotlib, Chart.js).
+5. **Results** are returned to the frontend and displayed in an animated dashboard.
+6. **User can export** results as CSV/JSON. Optionally, anonymize sensitive info.
+7. **Footer** always shows "Engineered by Abhishek" in a glowing, futuristic style.
+
+------------------------------------------------------------
+9. Cross-Platform Setup
+------------------------------------------------------------
+- Python 3.9+ and Node.js 16+ required
+- All dependencies listed in requirements.txt and package.json
+- Works on macOS, Windows, and Linux
+- README.md provides step-by-step setup for any user
+
+------------------------------------------------------------
+10. Security & Privacy
+------------------------------------------------------------
+- No resumes are sent to third-party servers
+- All processing is local
+- Option to anonymize personal information
+
+------------------------------------------------------------
+11. Author & Credits
+------------------------------------------------------------
+- Engineered by Abhishek
+- Open source, MIT License
+
+------------------------------------------------------------
+12. Contact & Contributions
+------------------------------------------------------------
+- Pull requests and issues welcome on GitHub
+- For feedback or feature requests, open an issue
+
+============================================================

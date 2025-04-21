@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-br from-cyan-50 via-white to-fuchsia-50 dark:from-gray-900 dark:via-gray-950 dark:to-cyan-950 text-gray-900 dark:text-white min-h-screen;
+  font-family: 'Inter', 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+footer {
+  transition: background 0.3s, color 0.3s;
+}
+
+.neon-glow-futuristic {
+  text-shadow:
+    0 0 6px #f0f, 0 0 12px #0ff, 0 0 16px #0ff,
+    0 0 24px #f0f, 0 0 32px #0ff;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Responsive and modern card look for main content */
+.main-content {
+  @apply max-w-3xl mx-auto bg-white/80 dark:bg-gray-900/80 rounded-xl shadow-xl p-8 mt-10 mb-6 backdrop-blur border border-white/10 dark:border-cyan-900/40;
+}
+
+/* Nav improvements */
+nav {
+  @apply shadow-lg rounded-b-xl;
+}
+
+/* Button improvements */
+button, .btn {
+  @apply bg-gradient-to-tr from-cyan-400 via-fuchsia-400 to-cyan-600 dark:from-cyan-800 dark:via-fuchsia-700 dark:to-cyan-900 text-white font-semibold rounded shadow-md px-4 py-2 transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none;
+}
+
+/* Ensure footer width matches text width */
+footer span {
+  display: inline-block;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
