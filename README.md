@@ -49,16 +49,6 @@
 
 > <b>Best viewed in dark mode for full effect.</b>
 
----
-
-## 💡 Demo Animation
-
-<p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2JzZ3J6a3NwNnVnZ2h6M3U5a2d5b3ZyN3ZqN2VpY3JkZHJ3dGJzZiZjd2NwZ2x2d3RjZzV6a2JpNnB2bGJ3dSZjdD1z/3o7TKtnuHOHHUjR38Y/giphy.gif" width="700" alt="Demo Animation"/>
-  <br><i>(Animated demo: parsing, analytics, and export in action!)</i>
-</p>
-
----
 
 ## 🛠️ Getting Started
 
