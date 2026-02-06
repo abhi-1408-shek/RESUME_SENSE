@@ -1,164 +1,116 @@
-<!-- Futuristic Resume Parser & Analytics Platform -->
+# ResumeSense
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=40&duration=3500&pause=1000&color=00FFE7&center=true&vCenter=true&width=900&lines=ResumeSense;AI+Resume+Parser+%26+Analytics+Platform;Futuristic.+Accurate.+Beautiful." alt="ResumeSense Animated Logo"/>
-</p>
+**ResumeSense** is an enterprise-grade, privacy-focused resume parsing and analytics platform designed to streamline the recruitment process through intelligent automation. By leveraging advanced Natural Language Processing (NLP) and Optical Character Recognition (OCR), ResumeSense transforms unstructured resume data into structured, actionable insights.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github"/>
-  <img src="https://img.shields.io/badge/license-MIT-blueviolet?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-0099ff?style=for-the-badge"/>
-  <img src="https://img.shields.io/github/stars/abhi-1408-shek/RESUME_PARSER?style=for-the-badge"/>
-</p>
-
-<p align="center">
-  <a href="#demo-animation" style="margin:0 10px;"><img src="https://img.shields.io/badge/Live+Demo-00ffe7?style=for-the-badge&logo=vercel"/></a>
-  <a href="https://github.com/abhi-1408-shek/RESUME_PARSER" style="margin:0 10px;"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github"/></a>
-  <a href="#getting-started" style="margin:0 10px;"><img src="https://img.shields.io/badge/Get+Started-fuchsia?style=for-the-badge&logo=rocket"/></a>
-</p>
+Designed for scalability and precision, this full-stack application enables users to process resumes in bulk, visualize candidate metrics through an interactive dashboard, and export standardized data for downstream integration.
 
 ---
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/github.svg" width="40"/>
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/react.svg" width="40"/>
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/python.svg" width="40"/>
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/fastapi.svg" width="40"/>
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/tailwindcss.svg" width="40"/>
-  <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/chartjs.svg" width="40"/>
-</div>
+## Key Capabilities
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:00ffe7,100:f0f&height=20&section=header"/>
-</p>
+*   **Intelligent Extraction**: Automatically identifies and segments critical candidate information—including contact details, technical skills, and educational background—from diverse file formats (PDF, DOCX, Images).
+*   **Privacy-First Architecture**: Built with data sovereignty in mind. All processing occurs locally on the host machine; no sensitive candidate data is transmitted to external servers.
+*   **Visual Analytics**: A comprehensive dashboard provides immediate visual feedback on candidate pools, highlighting skill distributions and key metrics.
+*   **Bulk Operations**: Optimized for high-volume environments, allowing simultaneous processing of multiple documents without performance degradation.
+*   **Format Agnostic**: Seamlessly handles text-based and image-based documents using integrated OCR technologies.
+*   **Data Export**: Effortlessly export parsed results in CSV or JSON format for integration with existing HR systems.
 
-<h2 align="center" style="color:#00ffe7;">Futuristic Features</h2>
+---
 
-- <b>Modern UI</b> — Sleek, responsive, and animated with dark/light mode
-- <b>AI Extraction</b> — Extracts emails, phones, skills, and more from PDFs, DOCX, images, etc.
-- <b>Analytics Dashboard</b> — Instant charts and insights after parsing
-- <b>Bulk Upload</b> — Analyze multiple resumes in one go
-- <b>Privacy-first</b> — Option to anonymize personal info
-- <b>Futuristic Visuals</b> — Neon glows, gradients, smooth transitions
-- <b>Export</b> — Download results as CSV or JSON
-- <b>Cross-platform</b> — Works on macOS, Windows, and Linux
+## Technology Stack
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:f0f,100:00ffe7&height=20&section=header"/>
-</p>
+This project is built on a robust, modern stack ensuring performance and maintainability:
 
-> <b>Best viewed in dark mode for full effect.</b>
+| Layer         | Technology                                                                 |
+| :------------ | :------------------------------------------------------------------------- |
+| **Backend**   | FastAPI (Python 3.9+) - High performance with native asynchronous support. |
+| **Frontend**  | React.js - A responsive, component-based user interface.                   |
+| **NLP & AI**  | Spacy, Presidio - Powers entity recognition and PII management.            |
+| **Visualization** | Chart.js (Frontend), Matplotlib (Backend) - Drives analytical reporting. |
+| **Styling**   | TailwindCSS - A clean, utility-first design system.                        |
 
+---
 
-## 🛠️ Getting Started
+## Getting Started
 
-### 1. Clone the repository
+### Prerequisites
+
+*   Python 3.9 or higher
+*   Node.js 16 or higher
+
+### Installation
+
+**1. Clone the Repository**
+
 ```bash
-git clone https://github.com/yourusername/resume-sense.git
+git clone https://github.com/abhi-1408-shek/RESUME_PARSER.git
 cd resume-sense
 ```
 
-### 2. Install Backend (FastAPI) dependencies
-#### (Recommended: Use a virtual environment)
+**2. Backend Setup**
+
+Navigate to the backend directory and create a virtual environment to manage dependencies.
+
 ```bash
-# For macOS/Linux/Windows (with Python 3.9+)
+cd backend
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install --upgrade pip
-pip install -r backend/requirements.txt
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-### 3. Install Frontend (React) dependencies
+**3. Frontend Setup**
+
+Install the necessary Node.js packages for the user interface.
+
 ```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
-### 4. Run the Application
-#### Start the backend server (in a new terminal):
+---
+
+## Usage
+
+**Start the Backend Server**
+
+Initialize the FastAPI server. It will listen for API requests at `http://localhost:8000`.
+
 ```bash
 cd backend
 uvicorn main:app --reload
 ```
-#### Start the frontend (in another terminal):
+
+**Launch the User Interface**
+
+Start the React development server to interact with the application.
+
 ```bash
 cd frontend
 npm start
 ```
 
-- Open your browser and go to [http://localhost:3000](http://localhost:3000)
+Access the application at `http://localhost:3000`.
 
 ---
 
-## ⚡ Project Structure
+## Architecture and Security
 
-```
-resume-sense/
-├── backend/        # FastAPI backend
-│   ├── main.py     # FastAPI entry point
-│   ├── ...         # Resume parsing, analytics, and more
-├── frontend/       # React frontend
-│   ├── src/
-│   └── ...
-├── README.md
-└── ...
-```
+ResumeSense adopts a decoupled architecture where the React frontend communicates with the FastAPI backend via RESTful endpoints.
+
+Security is paramount. The system includes built-in PII redaction capabilities utilizing Microsoft's Presidio library, ensuring that shared reports can be anonymized automatically. All data processing is performed locally, guaranteeing that no candidate information ever leaves the host environment.
 
 ---
 
-## 🌟 Screenshots
+## Contributing
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/placeholder/bulk-upload.png" width="350"/>
-  <img src="https://user-images.githubusercontent.com/placeholder/analytics-dashboard.png" width="350"/>
-</p>
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-## 🧬 Tech Stack
-- FastAPI (Python)
-- React (JavaScript)
-- TailwindCSS
-- Matplotlib, SpaCy, Presidio, Cohere (optional)
-- Chart.js
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🎨 Design & Animations
-- Futuristic gradients, neon glows, and smooth transitions
-- Fully responsive and beautiful in both dark and light mode
-- Custom footer: <b>Engineered by Abhishek</b>
-
----
-
-## ❓ FAQ
-- <b>Q:</b> Can I run this on Windows or macOS?
-  <br><b>A:</b> Yes! All commands above work on both platforms. Use the correct activate command for your OS.
-- <b>Q:</b> What file formats are supported?
-  <br><b>A:</b> PDF, DOCX, TXT, PNG, JPG, JPEG.
-- <b>Q:</b> How do I switch to dark mode?
-  <br><b>A:</b> Use the theme toggle in the top-right corner.
-- <b>Q:</b> Where is my data stored?
-  <br><b>A:</b> All parsing is done locally. No resumes are uploaded to a third-party server.
-
----
-
-## 🛡️ Requirements
-- Python 3.9+
-- Node.js 16+
-- npm 8+
-
----
-
-## Credits
-- <b><a href="https://abhi-gcet.netlify.app" target="_blank" style="color:#00ffe7; text-shadow:0 0 8px #00ffe7,0 0 16px #7f7fff; text-decoration:none;">Engineered by Abhishek</a></b>
-
----
-
-## 🦾 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-This project is licensed under the MIT License.
+**Engineered by Abhishek**
