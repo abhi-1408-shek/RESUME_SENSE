@@ -1,9 +1,27 @@
-from fastapi import FastAPI
+"""
+ResumeSense 2.0 - FastAPI Application
+Main entry point for the REST API.
+"""
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional, List
+import tempfile
+import os
 
-app = FastAPI()
+from app.services.parser_service import parse_resume
+from app.services.nlp_service import analyze_resume
+from app.services.matcher_service import match_resume_to_jd
+from app.core.config import API_HOST, API_PORT
 
-# CORS for frontend
+# Initialize FastAPI app
+app = FastAPI(
+    title="ResumeSense 2.0",
+    description="AI-Powered Resume Parser & Analytics Platform",
+    version="2.0.0"
+)
+
+# Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -12,27 +30,173 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def root():
-    return {"message": "ResumeSense backend is running!"}
 
-from extractor import router as extractor_router
-from ocr import router as ocr_router
-from nlp import router as nlp_router
-from match import router as match_router
-from suggest import router as suggest_router
-from anonymize import router as anonymize_router
-from bulk import router as bulk_router
-from export import router as export_router
-from analytics import router as analytics_router
-from semantic_match import router as semantic_match_router
-app.include_router(extractor_router, prefix="/extractor")
-app.include_router(ocr_router, prefix="/ocr")
-app.include_router(nlp_router, prefix="/nlp")
-app.include_router(match_router, prefix="/match")
-app.include_router(suggest_router, prefix="/suggest")
-app.include_router(anonymize_router, prefix="/anonymize")
-app.include_router(bulk_router, prefix="/bulk")
-app.include_router(export_router, prefix="/export")
-app.include_router(analytics_router, prefix="/analytics")
-app.include_router(semantic_match_router, prefix="/semantic-match")
+# ============ Models ============
+
+class MatchRequest(BaseModel):
+    resume_text: str
+    jd_text: str
+
+
+class AnalyzeRequest(BaseModel):
+    text: str
+
+
+# ============ Endpoints ============
+
+@app.get("/")
+async def root():
+    """Health check endpoint."""
+    return {
+        "status": "running",
+        "service": "ResumeSense 2.0",
+        "version": "2.0.0"
+    }
+
+
+@app.post("/api/parse")
+async def parse_file(file: UploadFile = File(...)):
+    """
+    Parse a resume file and extract raw text.
+    
+    Supports: PDF, DOCX, TXT
+    """
+    # Validate file extension
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in {".pdf", ".docx", ".doc", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type: {ext}. Supported: PDF, DOCX, TXT"
+        )
+    
+    # Save to temp file and process
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
+            content = await file.read()
+            tmp.write(content)
+            tmp_path = tmp.name
+        
+        text = parse_resume(tmp_path)
+        
+        return {
+            "success": True,
+            "filename": file.filename,
+            "text": text,
+            "char_count": len(text)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if 'tmp_path' in locals():
+            os.unlink(tmp_path)
+
+
+@app.post("/api/analyze")
+async def analyze_file(file: UploadFile = File(...)):
+    """
+    Analyze a resume file and extract structured information.
+    """
+    # First parse the file
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in {".pdf", ".docx", ".doc", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type: {ext}"
+        )
+    
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
+            content = await file.read()
+            tmp.write(content)
+            tmp_path = tmp.name
+        
+        # Parse and analyze
+        text = parse_resume(tmp_path)
+        data = analyze_resume(text)
+        
+        return {
+            "success": True,
+            "filename": file.filename,
+            "data": data
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if 'tmp_path' in locals():
+            os.unlink(tmp_path)
+
+
+@app.post("/api/analyze/text")
+async def analyze_text(request: AnalyzeRequest):
+    """
+    Analyze resume text directly (for already-parsed content).
+    """
+    if not request.text or len(request.text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Text too short. Please provide more content."
+        )
+    
+    data = analyze_resume(request.text)
+    return {"success": True, "data": data}
+
+
+@app.post("/api/match")
+async def match_resume(request: MatchRequest):
+    """
+    Match resume text against a job description.
+    """
+    if not request.resume_text or not request.jd_text:
+        raise HTTPException(
+            status_code=400,
+            detail="Both resume_text and jd_text are required."
+        )
+    
+    result = match_resume_to_jd(request.resume_text, request.jd_text)
+    return {"success": True, "result": result}
+
+
+@app.post("/api/match/file")
+async def match_file(
+    file: UploadFile = File(...),
+    jd_text: str = Form(...)
+):
+    """
+    Upload a resume file and match against job description text.
+    """
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in {".pdf", ".docx", ".doc", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type: {ext}"
+        )
+    
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
+            content = await file.read()
+            tmp.write(content)
+            tmp_path = tmp.name
+        
+        # Parse, analyze, and match
+        resume_text = parse_resume(tmp_path)
+        data = analyze_resume(resume_text)
+        match_result = match_resume_to_jd(resume_text, jd_text)
+        
+        return {
+            "success": True,
+            "filename": file.filename,
+            "resume_data": data,
+            "match_result": match_result
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if 'tmp_path' in locals():
+            os.unlink(tmp_path)
+
+
+# ============ Run Server ============
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host=API_HOST, port=API_PORT)
