@@ -66,3 +66,43 @@ export async function matchResumeToJD(file: File, jdText: string): Promise<Match
 
     return response.json();
 }
+
+// ============ Saliency Analysis ============
+
+export interface AttentionZone {
+    x_percent: number;
+    y_percent: number;
+    width_percent: number;
+    height_percent: number;
+    attention_level: number;
+    reason: string;
+}
+
+export interface SaliencyResponse {
+    success: boolean;
+    filename: string;
+    image_base64: string;
+    attention_zones: AttentionZone[];
+    overall_score: number;
+    summary: string;
+}
+
+export async function analyzeSaliency(file: File, apiKey?: string): Promise<SaliencyResponse> {
+    const formData = new FormData();
+    formData.append('file', file);
+    if (apiKey) {
+        formData.append('api_key', apiKey);
+    }
+
+    const response = await fetch(`${API_BASE}/api/saliency`, {
+        method: 'POST',
+        body: formData,
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || 'Failed to analyze saliency');
+    }
+
+    return response.json();
+}

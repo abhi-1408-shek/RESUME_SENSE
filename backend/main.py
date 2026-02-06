@@ -12,7 +12,9 @@ import os
 from app.services.parser_service import parse_resume
 from app.services.nlp_service import analyze_resume
 from app.services.matcher_service import match_resume_to_jd
+from app.services.saliency_service import analyze_resume_saliency
 from app.core.config import API_HOST, API_PORT
+from pathlib import Path
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -188,6 +190,63 @@ async def match_file(
             "resume_data": data,
             "match_result": match_result
         }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if 'tmp_path' in locals():
+            os.unlink(tmp_path)
+
+
+@app.post("/api/saliency")
+async def analyze_saliency(
+    file: UploadFile = File(...),
+    api_key: Optional[str] = Form(None)
+):
+    """
+    Analyze a resume PDF for visual attention patterns.
+    
+    Uses AI to predict where a recruiter's eyes would focus during a 6-second scan.
+    Returns the resume image with attention zone coordinates.
+    
+    Requires GOOGLE_API_KEY environment variable or api_key form field.
+    """
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext != ".pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Saliency analysis only supports PDF files"
+        )
+    
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
+            content = await file.read()
+            tmp.write(content)
+            tmp_path = tmp.name
+        
+        # Analyze saliency using Gemini Vision
+        result = analyze_resume_saliency(Path(tmp_path), api_key)
+        
+        if not result.get("success", False):
+            raise HTTPException(
+                status_code=500,
+                detail=result.get("error", "Saliency analysis failed")
+            )
+        
+        return {
+            "success": True,
+            "filename": file.filename,
+            "image_base64": result.get("image_base64"),
+            "attention_zones": result.get("attention_zones", []),
+            "overall_score": result.get("overall_score", 0),
+            "summary": result.get("summary", "")
+        }
+    except HTTPException:
+        raise
+    except ImportError as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Missing dependencies: {str(e)}. Run: pip install google-generativeai Pillow"
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
